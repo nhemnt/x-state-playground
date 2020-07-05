@@ -8,13 +8,14 @@ import {
 import Login from './Login';
 import Home from "./Home"
 
-const PrivateRoute = ({ component, ...rest }) => {
-  const isAuthed = false;
+const PrivateRoute = ({ component, user, ...rest }) => {
+  const isAuthed = localStorage.getItem('user');
+  const Component = component
   return (
     <Route {...rest} exact
       render={(props) => (
         isAuthed ? (
-          { component }
+          <Component {...rest} {...props} />
         ) :
           (
             <Redirect

@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-
+import React, { useState, useContext } from 'react'
+import { MachineContext } from 'state';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [machine, sendToMachine] = useContext(MachineContext);
 
   const getUpdateStateHook = (key) => {
     return {
@@ -21,6 +23,7 @@ const Login = () => {
     e.preventDefault();
 
     //login here
+    sendToMachine('LOGIN', { email, password })
   }
 
 

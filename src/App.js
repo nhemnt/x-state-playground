@@ -1,10 +1,19 @@
 import React from 'react';
-import Routes from "./routes";
+import Routes from "routes";
 import './App.css';
 
+
+
+import { useMachine } from '@xstate/react';
+import { appMachine, MachineContext } from 'state';
+
 function App() {
+  const [currentMachine, sendToMachine] = useMachine(appMachine);
   return (
-    <Routes />
+    <MachineContext.Provider value={[currentMachine, sendToMachine]}>
+      <Routes />
+    </MachineContext.Provider>
+
   );
 }
 

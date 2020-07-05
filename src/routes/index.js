@@ -33,8 +33,8 @@ export default function Routes() {
     <Router>
       <div>
         <Switch>
-          <Route path="/login" exact="true" component={Login} />
-          <PrivateRoute path="/" exact="true" component={Home} />
+          <Route path="/login" exact={true} component={Login} />
+          <PrivateRoute path="/" exact={true} component={Home} />
         </Switch>
       </div>
     </Router>
